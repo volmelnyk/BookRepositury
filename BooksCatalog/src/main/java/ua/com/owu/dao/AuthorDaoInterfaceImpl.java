@@ -37,7 +37,8 @@ public class AuthorDaoInterfaceImpl implements DaoInterface<Author> {
 
         if (!object.getFistName().equals(null)||
                 !object.getSecondName().equals(null)) {
-            author = object;
+            author.setFistName( object.getFistName());
+            author.setSecondName(object.getSecondName());
         }
         else
         {

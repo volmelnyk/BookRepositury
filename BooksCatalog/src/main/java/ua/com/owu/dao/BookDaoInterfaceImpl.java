@@ -46,7 +46,9 @@ public class BookDaoInterfaceImpl implements DaoInterface<Book> {
 
         if (!object.getAuthors().equals(null) && !object.getBookName().equals(null)
                 && !object.getDate().equals(null)) {
-            book = object;
+            book.setBookName( object.getBookName());
+            book.setDate( object.getDate());
+            book.setDescribtion( object.getDescribtion());
         } else {
             throw new Exception("Enter all fields!!");
         }

@@ -26,8 +26,8 @@ public class Main {
 
                 switch (value) {
                     case 1:
-                        System.out.println("Enter book fields" );
-                        Book book = new Book(scanner.next(), scanner.next(),scanner.next());
+                        System.out.println("Enter book fields");
+                        Book book = new Book(scanner.next(), scanner.next(), scanner.next());
                         System.out.println("Enter count of authors");
                         int n = scanner.nextInt();
                         List<Author> authors = new ArrayList<>();
@@ -39,7 +39,7 @@ public class Main {
                         bookDaoInterface.setAuthors(book.getId(), authors);
                         break;
                     case 2:
-                        System.out.println("Enter author fields" );
+                        System.out.println("Enter author fields");
                         authorDaoInterface.save(new Author(scanner.next(), scanner.next()));
                         break;
                     case 3:
@@ -55,15 +55,15 @@ public class Main {
                         break;
                     case 6:
                         System.out.println("Enter author for update id");
-                        System.out.println("Enter new data");
                         int id = scanner.nextInt();
-                        authorDaoInterface.update(new Author(scanner.next(),scanner.next()),id);
+                        System.out.println("Enter new data");
+                        authorDaoInterface.update(new Author(scanner.next(), scanner.next()), id);
                         break;
                     case 7:
                         System.out.println("Enter author update id");
                         id = scanner.nextInt();
                         System.out.println("Enter new data");
-                        bookDaoInterface.update(new Book(scanner.next(),scanner.next(),scanner.next()),id);
+                        bookDaoInterface.update(new Book(scanner.next(), scanner.next(), scanner.next()), id);
                         break;
                     case 8:
                         System.out.println("Enter book for delete id");
