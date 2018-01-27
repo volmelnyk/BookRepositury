@@ -14,11 +14,11 @@ public class BookDaoInterfaceImpl implements DaoInterface<Book> {
     EntityManagerFactory factory;
     EntityManager manager;
 
-    public BookDaoInterfaceImpl() {
-        factory = Persistence.createEntityManagerFactory("owu");
-        manager = factory.createEntityManager();
-
+    public BookDaoInterfaceImpl(EntityManagerFactory factory, EntityManager manager) {
+        this.factory = factory;
+        this.manager = manager;
     }
+
     public void setAuthors(int book,List<Author> a)
     {
         manager.getTransaction().begin();
@@ -73,7 +73,7 @@ public class BookDaoInterfaceImpl implements DaoInterface<Book> {
 
     public List<Book> getAllByAuthor(Author author) {
         List<Book> resultList = new ArrayList<>();
-        List<Book> resultList1 = manager.createQuery("select b from Book  b", Book.class).getResultList();
+        List<Book> resultList1 = manager.createQuery("select b from Book b where b.authors = :b" ).getResultList();
         for (Book book : resultList1) {
             if(book.getAuthors().contains(author))
             {
@@ -83,8 +83,4 @@ public class BookDaoInterfaceImpl implements DaoInterface<Book> {
         return resultList;
     }
 
-    public void close() {
-        manager.close();
-        factory.close();
-    }
 }

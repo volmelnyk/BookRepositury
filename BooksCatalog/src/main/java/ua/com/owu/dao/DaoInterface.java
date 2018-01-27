@@ -11,5 +11,4 @@ public interface DaoInterface<T> {
     public void delete(int id);
     public T getById(int id);
     public List<T> getAll();
-    public void close();
 }

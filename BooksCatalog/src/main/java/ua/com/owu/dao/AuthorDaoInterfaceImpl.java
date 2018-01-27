@@ -12,10 +12,9 @@ public class AuthorDaoInterfaceImpl implements DaoInterface<Author> {
     EntityManagerFactory factory;
     EntityManager manager;
 
-    public AuthorDaoInterfaceImpl() {
-        factory = Persistence.createEntityManagerFactory("owu");
-        manager = factory.createEntityManager();
-
+    public AuthorDaoInterfaceImpl(EntityManagerFactory factory, EntityManager manager) {
+        this.factory = factory;
+        this.manager = manager;
     }
 
     public void save(Author object) throws Exception {
@@ -63,8 +62,5 @@ public class AuthorDaoInterfaceImpl implements DaoInterface<Author> {
         return manager.createQuery("select a from Author a").getResultList();
     }
 
-    public void close() {
-        manager.close();
-        factory.close();
-    }
+
 }
